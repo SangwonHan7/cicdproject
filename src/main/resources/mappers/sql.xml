@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "*//mybatis.org//DID Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cicdproject.mapper.CouponMapper">
+	<select id = "getCouponCnt" resultType = "int">
+		SELECT COUNT(*) 
+		FROM TB_COUPON_EMAIL
+	</select>
+	
+	<select id = "selectCouponList" resultType = "com.cicdproject.dto.CouponDto">
+		SELECT 
+			COUPON_NO as couponNo,
+			EMAIL_ADDR as emailAddr,
+			REG_DATE as regDate
+		FROM TB_COUPON_EMAIL
+	</select>
+	
+	<insert id="insertCoupon">
+		INSERT INTO TB_COUPON_EMAIL 
+			(COUPON_NO,
+			EMAIL_ADDR,
+			REG_DATE)
+		VALUES 
+			(#{couponNo},
+			#{emailAddr},
+			#{regDate})
+	</insert>
+</mapper>
